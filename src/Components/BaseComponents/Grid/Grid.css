@@ -1,0 +1,10 @@
+.grid-base{
+    display: grid !important; 
+    width: 100% !important; 
+    /* height: fit-content !important;  */
+    box-sizing: border-box !important; 
+    overflow: auto !important;
+    grid-template-columns:  repeat(12,1fr) ;
+}
+
+

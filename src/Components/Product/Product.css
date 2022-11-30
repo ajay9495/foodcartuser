@@ -1,0 +1,15 @@
+.p-main-wrapper{
+    background-color: rgb(255, 255, 255);
+    height: 100%;
+    overflow-y: scroll;
+}
+
+
+.p-image{
+    width: 80%;
+}
+
+.p-image-wrapper{
+    background-color: #f7f9f7;
+    box-shadow: inset 0px 0px 40px 1px #c6c5c5;   
+}

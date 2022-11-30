@@ -1,0 +1,32 @@
+
+.ci-wrapper {
+    background-color: #fff;
+    width: 100%;
+    height: fit-content;
+    border-radius: 1rem;
+    box-sizing: border-box;
+    border: 1px solid #457848;
+}
+
+.ci-item-left{
+    width: 35%;
+}
+
+.ci-img-wrapper{
+    background-color: #f7f9f7;
+    /* background-color: #d62828; */
+    box-shadow: inset 0px 0px 40px 1px #c6c5c5;    
+    width: 100%;
+    aspect-ratio: 1/1;
+    border-radius: 1rem 1rem 1rem 1rem;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.ci-img{
+    width: 80%;
+}
+

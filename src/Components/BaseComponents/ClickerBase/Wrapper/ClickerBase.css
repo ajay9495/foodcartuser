@@ -1,0 +1,23 @@
+
+.w-clicker-base-wrapper{
+    height: fit-content;
+    width: fit-content;
+    /* background-color: rgb(157, 180, 227); */
+}
+
+.w-clicker-content{
+    height: fit-content;
+    width: fit-content;
+    background-color: rgb(0, 0, 0,0);
+    transition: 0.15s;
+
+}
+
+.w-clicker-content:active{
+    background-color: rgb(0, 0, 0,0.2);
+
+}
+
+
+
+

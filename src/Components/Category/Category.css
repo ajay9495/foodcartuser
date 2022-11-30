@@ -1,0 +1,40 @@
+.c-main-wrapper{
+    overflow-y: scroll;
+    height: 100%;
+}
+
+.c-sub {
+    background-color: #fff;
+    width: 100%;
+    height: fit-content;
+    border-radius: 1rem;
+    box-sizing: border-box;
+    border: 1px solid #457848;
+}
+
+.c-sub:active{
+    border-color: #c6c5c5;
+}
+
+.c-image-wrapper {
+    background-color: #f7f9f7;
+    box-shadow: inset 0px 0px 40px 1px #c6c5c5;
+    width: 100%;
+    aspect-ratio: 1;
+    border-radius: 1rem 1rem 0rem 0rem;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.c-image {
+    width: 80%;
+    height: auto;
+}
+
+.c-text {
+    max-height: 0.5 rem;
+}
+

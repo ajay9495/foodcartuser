@@ -1,0 +1,29 @@
+
+.grid-item-base{
+    box-sizing: border-box;
+}
+
+.g-collapse-y{
+    height: fit-content;
+}
+
+.g-expand-y{
+    height: 100%;
+
+}
+
+.g-s-1 {   grid-column: span 1;   }
+.g-s-2 {   grid-column: span 2;   }
+.g-s-3 {   grid-column: span 3;   }
+.g-s-4 {   grid-column: span 4;   }
+.g-s-5 {   grid-column: span 5;   }
+.g-s-6 {   grid-column: span 6;   }
+.g-s-7 {   grid-column: span 7;   }
+.g-s-8 {   grid-column: span 8;   }
+.g-s-9 {   grid-column: span 9;   }
+.g-s-10 {   grid-column: span 10;   }
+.g-s-11 {   grid-column: span 11;   }
+.g-s-12 {   grid-column: span 12;   }
+
+
+

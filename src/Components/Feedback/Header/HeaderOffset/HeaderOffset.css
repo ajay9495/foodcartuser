@@ -1,0 +1,34 @@
+.header-offset-content-wrapper{
+    background-color: rgb(255, 255, 255);
+    height: fit-content;
+    width: 100%;
+    /* padding:  5px 10px 5px 10px; */
+    box-sizing: border-box;
+    top: 0px;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    opacity: 1;
+}
+
+.header-offset-grid-sub{
+    /* background-color: rgb(255, 255, 255); */
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+   /* padding: 8px; */
+    box-sizing: border-box;
+}
+  
+.header-offset-grid-left{
+    padding:  5px 0px 5px 25px;
+    justify-content: flex-start;
+}
+
+.header-offset-grid-right{
+    padding:  5px 25px 5px 0px;
+    justify-content: flex-end;
+    stroke: #fff;
+    stroke-width: 1px;
+}
+
+

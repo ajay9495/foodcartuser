@@ -1,0 +1,32 @@
+.header-content-wrapper{
+    background-color: rgb(255, 255, 255);
+    height: fit-content;
+    width: 100%;
+    box-sizing: border-box;
+    top: 0px;
+    display: grid;
+    /* grid-template-columns: 50% 50%; */
+
+}
+
+.gridSub{
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    box-sizing: border-box;
+}
+  
+.gridLeft{
+    padding:  10px 0px 10px 25px;
+    justify-content: flex-start;
+}
+
+.gridRight{
+    padding:  5px 25px 5px 0px;
+    justify-content: flex-end;
+    /* stroke: #fff; */
+    /* stroke-width: 1px; */
+}
+
+

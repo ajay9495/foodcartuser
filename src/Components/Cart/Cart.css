@@ -1,0 +1,37 @@
+.ca-main-wrapper{
+    background-color: #ffffff;
+    /* overflow-y: scroll; */
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    top: 0rem;
+    z-index: 10;
+    display: grid;
+    grid-template-rows: auto max-content;
+}
+
+.ca-content-wrapper{
+    background-color: #ffffff;
+    overflow-y: scroll;
+}
+
+.ca-total-sub{
+    border-bottom: 1px solid rgba(69, 120, 72, 0.3);
+}
+
+.ca-total-wrapper{
+    background-color: #fff;
+    width: 100%;
+    height: fit-content;
+    border-radius: 1rem;
+    box-sizing: border-box;
+    border: 1px solid rgb(69, 120, 72);
+}
+
+.dialogue{
+    height: 100px;
+    width: 100px;
+    background-color: #afafaf;
+    position: fixed;
+    z-index: 25;
+}

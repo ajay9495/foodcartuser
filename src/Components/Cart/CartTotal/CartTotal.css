@@ -1,0 +1,13 @@
+.ct-total-wrapper{
+    background-color: #fff;
+    width: 100%;
+    height: fit-content;
+    border-radius: 1rem;
+    box-sizing: border-box;
+    border: 1px solid rgb(69, 120, 72);
+}
+
+
+.ct-total-sub{
+    border-bottom: 1px solid rgba(69, 120, 72, 0.3);
+}

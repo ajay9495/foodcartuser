@@ -1,0 +1,16 @@
+.a-user-details-wrapper{
+    height: 15rem;
+}
+
+
+
+.a-image-wrapper{
+    background-color: #457848;
+    height: 5rem;
+    width: 5rem;
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
