@@ -40,6 +40,38 @@ const customSlice = createSlice({
     }
 });
 
+function setInitialProductListData(state,action){
+
+    sipd_cartItem = {};
+    sipd_data = action.payload.data;
+    sipd_cartState = action.payload.cartState;
+
+
+    state.data =  sipd_data.map((item)=>{
+
+        sipd_cartItem = getItemFromCart(item.id,sipd_cartState.data);
+        
+
+        if(Object.keys(sipd_cartItem).length === 0){
+
+            return {
+                ...item, 
+                discount: getDiscount(item),
+                is_selected: false,
+                quantity:1
+            }            
+            
+        }
+        else{
+            return {...sipd_cartItem}
+        }
+
+
+
+    });
+
+}
+
 
 function clearPreviousState(state,action){
     
@@ -150,102 +182,6 @@ function setPriceData(state,action){
 
 }
 
-function setInitialProductListData(state,action){
-
-    sipd_cartItem = {};
-    sipd_data = action.payload.data;
-    sipd_cartState = action.payload.cartState;
-
-
-
-    state.data =  sipd_data.map((item)=>{
-
-        sipd_cartItem = getItemFromCart(item.id,sipd_cartState.data);
-
-        if(Object.keys(sipd_cartItem).length === 0){
-
-            return {
-                ...item, 
-                mrp: getInitialMrp(item.mrp), 
-                selling_price: getInitialSellingPrice(item.selling_price),
-                is_selected: false,
-                quantity:1,
-                current_selling_price: getCurrentSellingPrice(item.selling_price),
-                current_mrp: getCurrentMrp(item.mrp)
-            }            
-            
-        }
-        else{
-            return {...sipd_cartItem}
-        }
-
-
-
-    });
-
-}
-
-function getInitialMrp(mrp){
-
-    mrp = JSON.parse(mrp);
-    return mrp.map((item)=>{
-        
-        if(item.id == "mrp_1"){
-            return {...item, isActive: 'active'};
-        }
-        else{
-            return {...item, isActive: 'inActive'}
-        }
-    });
-}
-
-function getInitialSellingPrice(sellingPrice){
-
-    sellingPrice = JSON.parse(sellingPrice);
-
-
-    return sellingPrice.map((item,index)=>{
-
-        if (item.id == "sellingPrice_1") {
-            return {...item, isActive:'active' }
-        }
-        else{
-            return {...item, isActive:'inActive' }
-        }
-    })
-}
-
-function getCurrentSellingPrice(sellingPrice){
-    
-    gcsp_sellingPrice = {id:'sellingPrice_1',value:{quantity:0,price:0}, isActive: 'active'};
-    sellingPrice = JSON.parse(sellingPrice);
-
-    sellingPrice.forEach((item) => {
-
-        if(item.id == "sellingPrice_1"){
-            gcsp_sellingPrice =  {...item, isActive: 'active'};
-        }    
-    });
-
-    return gcsp_sellingPrice;
-    
-}
-
-function getCurrentMrp(mrp){
-
-    gcmrp_mrp = {id:'mrp_1',value:{quantity:0,price:0}, isActive: 'active'};
-    mrp = JSON.parse(mrp);
-
-    mrp.forEach((item)=>{
-
-        if(item.id == "mrp_1"){
-            gcmrp_mrp =  {...item, isActive: 'active'};
-        }
-    });
-
-    return gcmrp_mrp;
-
-}
 
 function getItemFromCart(id,cartArr){
 
@@ -261,7 +197,23 @@ function getItemFromCart(id,cartArr){
 
 }
 
+let gd_sellingPrice;
+let gd_mrp;
 
+function getDiscount(item){
+
+    gd_sellingPrice = item.selling_price;
+    gd_mrp = item.mrp;
+
+    if(gd_sellingPrice < gd_mrp){
+
+        return parseInt(((gd_mrp - gd_sellingPrice)/gd_mrp)*100)
+    }
+    else{
+        return 0;
+    }
+
+}
 
 
 export function getProductListState(state){

@@ -8,10 +8,6 @@ import Biscuit from '../../../Image/biscuit.png'
 
 export default function CartItem({data,change}){
 
-  let sellingPrice = JSON.parse(data.current_selling_price);
-  let totalPrice = (sellingPrice.value.quantity*sellingPrice.value.price)*data.quantity;
-    
-
 
   return (
 
@@ -37,7 +33,7 @@ export default function CartItem({data,change}){
           </Row>
           <Row classList={'bo'}>
             <Typography color={'#457848'} fontWeight={'bold'} fontSize={'1.3rem'} >
-              {"Rs "+  totalPrice}
+              {"Rs "+(data.quantity*data.selling_price)}
             </Typography>
           </Row>
         </Col>

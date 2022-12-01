@@ -6,16 +6,19 @@ import useLocalStorage from "../../SharedModules/LocalStorage/useLocalStorage";
 import { useNavigate,useLocation } from "react-router-dom";
 import { DialogueStore } from '../../Redux/DialogueSlice';
 import useSharedLibrary from "../../SharedModules/SharedLibrary/useSharedLibrary";
+import useSharedConfig from "../../SharedModules/SharedConfig/SharedConfig";
 
 export default function useRegisterLogic(){
 
+    const {config} = useSharedConfig();
+    const STORE_ID = config.STORE_ID;
 
 
     let initialState = [
             {id:'phone',value:'',error:''},
             {id:'password',value:'',error:''},
             {id:'name',value:'',error:''},
-            {id:'store_id',value:'',error:''}
+            {id:'store_id',value:STORE_ID,error:''}
     ];
  
     const dispatch = useDispatch();
@@ -68,20 +71,6 @@ export default function useRegisterLogic(){
         })
     }
 
-    function StoreIdChange(e){
-        setState((prevState)=>{
-            return prevState.map((item)=>{
-                if(item.id == 'store_id'){
-                    return {...item,value: e.target.value, error:''}
-                }
-                else{
-                    return {...item}
-                }
-            })
-        })
-    }
-
-
 
 
     let v_isValid = true;
@@ -92,18 +81,8 @@ export default function useRegisterLogic(){
 
             return prevState.map((item)=>{
 
-                if(item.id == 'store_id'){
 
-                    if(isNotFiveDigit(item.value)){
-
-                        v_isValid = false;
-                        return {...item,error:"Store length must be five characters"};
-                    }
-                    else{
-                        return {...item,error:""};
-                    }
-                }
-                else if(item.id == 'name'){
+                if(item.id == 'name'){
 
                     if(checkIsNull(item.value)){
 
@@ -156,7 +135,7 @@ export default function useRegisterLogic(){
     function submit(isValid){
 
         if(isValid == true){
-            
+
             sendUserData(state)
             .then((data)=>{ processPostResult(data) })
             .catch((err)=>{ processGetError(err); })
@@ -172,7 +151,7 @@ export default function useRegisterLogic(){
 
             ppr_userData = {
                 status:'loggedIn',
-                store_id: parseInt(state[3].value), 
+                store_id: state[3].value, 
                 user_id: data.payload,
                 address:'',
                 landmark:'',
@@ -297,7 +276,6 @@ export default function useRegisterLogic(){
         passwordChange: passwordChange,
         validate: validate,
         nameChange: nameChange,
-        StoreIdChange: StoreIdChange,
         goToLogin: goToLogin
     }
 

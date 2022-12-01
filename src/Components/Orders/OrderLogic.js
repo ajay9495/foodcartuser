@@ -5,7 +5,7 @@ import useLocalStorage from "../../SharedModules/LocalStorage/useLocalStorage";
 import { DialogueStore } from '../../Redux/DialogueSlice';
 import { useSelector,useDispatch } from "react-redux";
 import useSharedConfig from "../../SharedModules/SharedConfig/SharedConfig";
-
+ 
 export default function useOrdersLogic(){
 
     let INITIAL_STATE = {
@@ -27,7 +27,6 @@ export default function useOrdersLogic(){
 
 
     function processOrdersData(data){
-
 
         if(data.status == "success"){
 

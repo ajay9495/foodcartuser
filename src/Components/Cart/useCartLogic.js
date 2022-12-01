@@ -8,6 +8,7 @@ export default function useCartLogic(){
     const state = useSelector(cartGetters.getCartState);
 
     let selectedItemsList = [];
+
     let totalData = {totalMrp: 0, totalSavings: 0, totalPrice:0};
     selectedItemsList = state.data.filter((item)=> item.is_selected ); 
 
@@ -15,8 +16,8 @@ export default function useCartLogic(){
     let totalPrice = 0;
     let totalSavings = 0;
     selectedItemsList.forEach((item)=>{
-        totalMrp = totalMrp + (item.current_selling_price.value.quantity * item.current_mrp.value.price) * item.quantity; 
-        totalPrice = totalPrice + (item.current_selling_price.value.quantity * item.current_selling_price.value.price) * item.quantity 
+        totalMrp = totalMrp + item.mrp * item.quantity; 
+        totalPrice = totalPrice + item.selling_price * item.quantity 
     });
  
     totalSavings = totalMrp - totalPrice;

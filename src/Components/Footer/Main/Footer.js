@@ -46,7 +46,7 @@ export default function Footer() {
       </ClickerBase>
       <ClickerBase>
         <div className="footer-sub" onClick={event => goTo("Cart")} >
-          {(1)&&
+          {(totalQuantity > 0)&&
               <div className="footer-coin">
                 <Typography fontWeight={'bold'} fontSize={'0.5rem'} sx={{color:'#fff'}}>
                   {totalQuantity}

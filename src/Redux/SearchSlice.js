@@ -55,11 +55,7 @@ function setInitialResultState(state,action){
 
                 return {
                     ...item,
-                    mrp:JSON.parse(item.mrp),
-                    selling_price: getInitialSellingPrice(item.selling_price),
-                    current_selling_price: getInitialCurrentSellingPrice(item.selling_price),
-                    current_mrp: getInitialCurrentMrp(item.mrp),
-                    image_url: item.image_url,
+                    discount: getDiscount(item),
                     quantity:1,
                     is_selected: false
                 }
@@ -269,6 +265,25 @@ function getInitialSellingPrice(sellingPriceArr){
     });
 
 
+
+}
+
+
+let gd_sellingPrice;
+let gd_mrp;
+
+function getDiscount(item){
+
+    gd_sellingPrice = item.selling_price;
+    gd_mrp = item.mrp;
+
+    if(gd_sellingPrice < gd_mrp){
+
+        return parseInt(((gd_mrp - gd_sellingPrice)/gd_mrp)*100)
+    }
+    else{
+        return 0;
+    }
 
 }
 

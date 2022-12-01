@@ -14,7 +14,7 @@ export default function useSearchApi(){
 
     function getSearchData(keyword,storeId){
 
-        END_POINT = BASE_URL+'searchProduct?search='+keyword+'&store_id='+storeId;
+        END_POINT = BASE_URL+'searchInstockProduct?search='+keyword+'&store_id='+storeId;
 
         REQUEST_OPTIONS = {
             method: 'GET',

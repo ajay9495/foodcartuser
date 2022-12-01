@@ -58,7 +58,7 @@ export default function Search() {
                                 <img src={config.CURRENT_PRODUCT_IMAGE_BASE+item.image_url} className={'s-img'} />
                                 </div>
                             </Col>
-                            <Col classList={'px-3 pt-3 gy-3 c-expand s-overflow-hidden'}>
+                            <Col classList={'px-3 pt-3 gy-4 c-expand s-item-right'}>
 
                                 <Section id='title' classList={'bo '} >
                                     <Row classList={'bo '}>
@@ -67,40 +67,23 @@ export default function Search() {
                                         </Typography>
                                     </Row>
                                 </Section>
-                                
-                                <Section id='offer' classList={'bo '}  >
-                                    <Col classList={'bo gy-1'}>
-                                        <Row classList={'bo'}>
-                                        <Typography  color={'#457848'} fontWeight={'bold'} fontSize={'0.7rem'} >
-                                            Combo offers
-                                        </Typography>                            
-                                        </Row>
-                                        <Row classList={'bo gx-2 s-unit-price-wrapper'}>
-                                            {
-                                                item.selling_price.map((sellingPriceItem)=>{
-                                                    return <Offer product={item} change={change} data={{item:sellingPriceItem, unit:item.unit}}  key={sellingPriceItem.id} />
-                                                })
-                                            }
-                                        </Row>
-                                    </Col>
-                                </Section>
 
                                 <Section id='price' classList={'bo '}>
-                                    <Row classList={'bo s-2  gx-2'}>
+                                    <Row classList={'bo pl-2  gx-2'}>
                                         <Col classList={'bo '}>
-                                        <Row classList={'bo '}>
-                                            <Typography  color={'#457848'} fontWeight={'bold'} fontSize={'1.3rem'} >
-                                            Rs {getDisplayPrice(item)}
-                                            </Typography>  
-                                        </Row>
+                                            <Row classList={'bo '}>
+                                                <Typography  color={'#457848'} fontWeight={'bold'} fontSize={'1rem'} >
+                                                    Rs {item.selling_price}
+                                                </Typography>  
+                                            </Row>
                                         </Col>
-                                        <Col classList={'bo px-2 c-y-center'}>
-                                        <div className="bo px-2 py-1 s-discount">
+                                    <Col classList={'bo px-2 c-y-center'}>
+                                        <div className="bo px-2 py-1 pl-discount">
                                             <Typography  color={'#457848'} fontWeight={'bold'} fontSize={'0.6rem'} >
-                                            {getDiscount(item)} % off
+                                                {(item.discount != 0)? item.discount+" % off" : ""}
                                             </Typography>                                 
                                         </div>
-                                        </Col>
+                                    </Col>
                                     </Row>
                                 </Section>
 

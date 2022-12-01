@@ -66,7 +66,6 @@ export default function useSearchLogic(){
 
     function processSearchResult(data){
 
-
         if(data.status == "success"){
 
             if(data.payload.length > 0){

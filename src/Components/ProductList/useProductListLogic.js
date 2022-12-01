@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import useProductListApi from './useProductListApi'
 import {useLocation} from 'react-router-dom';
 import useLocalStorage from "../../SharedModules/LocalStorage/useLocalStorage";
-
+ 
 import {productListGetters} from '../../Redux/ProductListSlice'
 import {cartGetters} from '../../Redux/CartSlice';
 import useSharedLibrary from "../../SharedModules/SharedLibrary/useSharedLibrary";
@@ -25,20 +25,9 @@ export default function useProductListLogic(){
     let STORE_ID = USER_DATA.store_id;
     let CATEGORY_ID = location.state.category_id;
     
-    let gdv_totalMrpPrice = 1;
-    let gdv_totalSellingPrice = 1;
-
-
 
     function clearPreviousState(){
         dispatch(productListGetters.getAction_clearPreviousState());
-    }
-
-    function selectOffer(product,sellingPrice){
-
-        dispatch(productListGetters.getAction_setPrice(product,sellingPrice));
-        dispatch(cartGetters.getActionSetPrice(product,sellingPrice));
-
     }
 
     function addButtonChange(product){
@@ -56,21 +45,9 @@ export default function useProductListLogic(){
         dispatch(cartGetters.getDecrementQuantityAction(product));
     }
 
-    function getDisplayPrice(sellingPrice, quantity){
-
-        return parseInt(sellingPrice.value.quantity * sellingPrice.value.price *quantity);
-    }
-
-    function getDiscountValue(sellingPrice,mrp,quantity){
-
-        gdv_totalMrpPrice = mrp.value.price * sellingPrice.value.quantity * quantity;
-        gdv_totalSellingPrice = sellingPrice.value.price * sellingPrice.value.quantity *quantity;
-
-        return  parseInt(((mrp.value.price - sellingPrice.value.price)/mrp.value.price)*100);
-
-    }
 
     function processProductListData(data){
+
 
         if(data.status == "success"){
 
@@ -101,9 +78,6 @@ export default function useProductListLogic(){
     },[])
 
     let change = {
-        getDisplayPrice : getDisplayPrice,
-        getDiscountValue: getDiscountValue,
-        selectOffer: selectOffer,
         addButtonChange: addButtonChange,
         incrementQuantity: incrementQuantity,
         decrementQuantity:decrementQuantity

@@ -8,7 +8,6 @@ import Biscuit from '../../../Image/biscuit.png'
 
 export default function CartItem({data}){
 
-  let price = ((data.current_selling_price.value.price * data.current_selling_price.value.quantity)*data.quantity) 
 
   return (
 
@@ -32,7 +31,7 @@ export default function CartItem({data}){
           </Row>
           <Row classList={'bo'}>
             <Typography color={'#457848'} fontWeight={'bold'} fontSize={'1.3rem'} >
-              {"Rs "+ price}
+              {"Rs "+ data.selling_price}
             </Typography>
           </Row>
         </Col>

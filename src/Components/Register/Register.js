@@ -31,11 +31,7 @@ export default function Register() {
                 <Col classList={'bo p-3 re-sub'}>
                     <TextField onChange={(e)=>{ change.passwordChange(e) }} label="Password" variant="outlined" />
                     <Typography sx={{fontSize:'0.75rem', color:'red'}}> {state[1].error} </Typography>
-                </Col>
-                <Col classList={'bo p-3 re-sub'}>
-                    <TextField onChange={(e)=>{ change.StoreIdChange(e) }} label="Store ID" variant="outlined" />
-                    <Typography sx={{fontSize:'0.75rem', color:'red'}}> {state[3].error} </Typography>
-                </Col>                
+                </Col>               
                 <Col classList={'bo p-3 re-sub'}>
                     <Button onClick={(e)=>{ change.validate() }} sx={{padding:'1rem'}} color={'success'} variant='contained' >
                         Register
