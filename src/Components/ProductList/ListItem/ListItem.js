@@ -37,7 +37,7 @@ export default function ListItem({item,change,config}) {
                     <Col classList={'bo '}>
                         <Row classList={'bo '}>
                             <Typography  color={'#457848'} fontWeight={'bold'} fontSize={'1rem'} >
-                                Rs {item.selling_price}
+                                Rs {(item.selling_price*item.quantity)}
                             </Typography>  
                         </Row>
                     </Col>

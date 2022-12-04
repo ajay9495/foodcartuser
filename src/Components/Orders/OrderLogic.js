@@ -22,7 +22,7 @@ export default function useOrdersLogic(){
 
 
     let USER_DATA = getLocalUserData();
-    let STORE_ID = USER_DATA.store_id;
+    let STORE_ID = config.STORE_ID;
     let USER_ID = USER_DATA.user_id;
 
 

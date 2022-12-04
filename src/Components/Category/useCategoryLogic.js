@@ -16,10 +16,10 @@ export default function useCategoryLogic(){
     const { loadCategoryData, processGetError} = useCategoryApi();
     const {getLocalUserData} = useLocalStorage();
     const {config} = useSharedConfig();
-
-
     let USER_DATA = getLocalUserData();
-    let STORE_ID = USER_DATA.store_id;
+ 
+
+    let STORE_ID = config.STORE_ID;
     
 
     function processCategoryData(data){

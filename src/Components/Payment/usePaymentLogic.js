@@ -4,9 +4,9 @@ import useLocalStorage from "../../SharedModules/LocalStorage/useLocalStorage";
 import { useNavigate } from "react-router-dom";
 import usePaymentApi from './usePaymentApi'
 import { useState } from "react";
+import useSharedConfig from "../../SharedModules/SharedConfig/SharedConfig";
 
-
-
+ 
 
 export default function usePaymentLogic(){
 
@@ -16,9 +16,11 @@ export default function usePaymentLogic(){
     const { processGetError, sendOrderData } = usePaymentApi();
     const [dialogueState, setDialogueState] = useState({isOpen:false, message: ""});
     const dispatch = useDispatch();
-
+    const {config} = useSharedConfig();
     let USER_DATA = getLocalUserData();
-    let STORE_ID = USER_DATA.store_id;
+
+    
+    let STORE_ID = config.STORE_ID;
     let USER_ID = USER_DATA.user_id; 
 
     let selectedItemsList = [];

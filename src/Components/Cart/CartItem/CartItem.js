@@ -31,7 +31,7 @@ export default function CartItem({data}){
           </Row>
           <Row classList={'bo'}>
             <Typography color={'#457848'} fontWeight={'bold'} fontSize={'1.3rem'} >
-              {"Rs "+ data.selling_price}
+              {"Rs "+ (data.selling_price*data.quantity)}
             </Typography>
           </Row>
         </Col>

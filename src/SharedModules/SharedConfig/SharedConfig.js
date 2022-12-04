@@ -13,9 +13,9 @@ export default function useSharedConfig(){
     const REMOTE_PRODUCT_IMAGE_BASE = "https://homeshope.xyz/storage/app/public/products/";
     const REMOTE_PRODUCT_IMAGE_BASE_TWO = "http://139.59.93.2/storage/app/public/products/";
 
-    const CURRENT_BASE_URL = LOCAL_BASE_URL;
-    const CURRENT_CATEGORY_IMAGE_BASE = LOCAL_CATEGORY_IMAGE_BASE;
-    const CURRENT_PRODUCT_IMAGE_BASE = LOCAL_PRODUCT_IMAGE_BASE;
+    const CURRENT_BASE_URL = REMOTE_BASE_URL;
+    const CURRENT_CATEGORY_IMAGE_BASE = REMOTE_CATEGORY_IMAGE_BASE;
+    const CURRENT_PRODUCT_IMAGE_BASE = REMOTE_PRODUCT_IMAGE_BASE;
 
     const ORDER_ID_MASK = 1111;
     const STORE_ID = 1;

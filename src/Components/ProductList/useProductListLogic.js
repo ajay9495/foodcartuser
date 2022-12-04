@@ -20,9 +20,9 @@ export default function useProductListLogic(){
     const {setLocalUserData,getLocalUserData} = useLocalStorage();
     const {sharedLibrary} = useSharedLibrary();
     const {config} = useSharedConfig();
-
     let USER_DATA = getLocalUserData();
-    let STORE_ID = USER_DATA.store_id;
+
+    let STORE_ID = config.STORE_ID;
     let CATEGORY_ID = location.state.category_id;
     
 

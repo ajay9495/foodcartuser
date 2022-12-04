@@ -4,7 +4,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 
 export default function useMapLogic(){ 
 
-
+ 
     let location = useLocation();
     let nearbyLocation = {lat: location.state.nearbyLocation.lat, lng: location.state.nearbyLocation.lng}
     const [locationState,setLocationState] = useState(nearbyLocation);
