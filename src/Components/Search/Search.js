@@ -78,11 +78,13 @@ export default function Search() {
                                             </Row>
                                         </Col>
                                     <Col classList={'bo px-2 c-y-center'}>
-                                        <div className="bo px-2 py-1 pl-discount">
-                                            <Typography  color={'#457848'} fontWeight={'bold'} fontSize={'0.6rem'} >
-                                                {(item.discount != 0)? item.discount+" % off" : ""}
-                                            </Typography>                                 
-                                        </div>
+                                        {(item.discount != 0)&&
+                                            <div className="bo px-2 py-1 pl-discount">
+                                                <Typography  color={'#457848'} fontWeight={'bold'} fontSize={'0.6rem'} >
+                                                    {item.discount+" % off" }
+                                                </Typography>                                 
+                                            </div>
+                                        }
                                     </Col>
                                     </Row>
                                 </Section>
