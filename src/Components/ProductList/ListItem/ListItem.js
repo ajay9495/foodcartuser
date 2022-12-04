@@ -42,16 +42,13 @@ export default function ListItem({item,change,config}) {
                         </Row>
                     </Col>
                     <Col classList={'bo px-2 c-y-center'}>
-                        <div className="bo px-2 py-1 pl-discount">
-
-                            {(item.discount != 0)&&
+                        {(item.discount != 0)&&
+                            <div className="bo px-2 py-1 pl-discount">
                                 <Typography  color={'#457848'} fontWeight={'bold'} fontSize={'0.6rem'} >
                                     {item.discount+" % off"}
-                                </Typography> 
-                            }
-
-                                
-                        </div>
+                                </Typography>   
+                            </div>
+                        }
                     </Col>
                     </Row>
                 </Section>
