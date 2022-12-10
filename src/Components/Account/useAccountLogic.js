@@ -2,12 +2,15 @@ import { useNavigate } from "react-router-dom";
 import { useSelector,useDispatch } from "react-redux";
 import {UserStore} from "../../Redux/UserSlice";
 import useLocalStorage from "../../SharedModules/LocalStorage/useLocalStorage";
+import useSharedConfig from "../../SharedModules/SharedConfig/SharedConfig";
+
 
 export default function useAccountLogic(){
 
     const navigateTo = useNavigate();
     const dispatch = useDispatch();
     const {setLocalUserData,getLocalUserData} = useLocalStorage();
+    const {config} = useSharedConfig();
 
     let userData = {};
     let localUserData = {};
@@ -28,7 +31,7 @@ export default function useAccountLogic(){
         setLocalUserData(userData);
         dispatch(UserStore.getAction_setUserData(userData));
 
-        document.location.href="/";
+        document.location.href= config.ROOT_PATH;
 
     }
 

@@ -32,6 +32,7 @@ export default function MainRouter(){
             
             <div className=" main-sub">
                 <Routes location={loc} key={loc.key} >
+                    {/* <Route path={'/'} element={<Category />} /> */}
                     <Route path={config.ROOT_PATH} element={<Category />} />
                     <Route path={config.ROOT_PATH+'/Account'} element={<Account />} />
                     <Route path={config.ROOT_PATH+'/ProductList'} element={<ProductList />} />

@@ -8,12 +8,14 @@ import Header from './Header/Main/Header'
 import HeaderOffset from './Header/HeaderOffset/HeaderOffset'
 import { Typography } from '@mui/material'
 
+
 import useCategoryLogic from './useCategoryLogic'
 import './Category.css'
 
 export default function Category(){
 
     const {state, navigateTo,config} = useCategoryLogic();
+     
 
     return (
         <Wrapper classList={' c-main-wrapper'}>
@@ -25,7 +27,7 @@ export default function Category(){
             {
                 state.data.map((item,index)=>{
                     return(
-                        <GridItem  classList={'g-s-6 g-collapse-y'}   onClick={event => navigateTo('ProductList',  {state:{category_id: item.id }}  ) }  key={index}>
+                        <GridItem  classList={'g-s-6 g-collapse-y'}   onClick={event => navigateTo(config.ROOT_PATH+"/ProductList",  {state:{category_id: item.id }}  ) }  key={index}>
                             <Col classList='c-sub'>
                                 <Row >
                                     <div className='c-image-wrapper'>

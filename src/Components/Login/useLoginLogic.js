@@ -133,7 +133,7 @@ export default function useLoginLogic(){
             
             setLocalUserData(userData);
             dispatch(UserStore.getAction_setUserData(userData));   
-            navigateTo('/');         
+            navigateTo(config.ROOT_PATH);         
             
         }
         else if(data.status == "failed"){

@@ -48,7 +48,7 @@ export default function useOrdersLogic(){
         }
         else if(data.status == "failed"){
 
-            dispatch(DialogueStore.getAction_openDialogue(data.message));
+            dispatch(DialogueStore.getAction_openDialogue("No orders data found in the server."));
 
         }
         else{

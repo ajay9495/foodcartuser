@@ -160,7 +160,7 @@ export default function useRegisterLogic(){
 
             setLocalUserData(ppr_userData);
             dispatch(UserStore.getAction_setUserData(ppr_userData));
-            navigateTo('/');
+            navigateTo(config.ROOT_PATH);
 
         }
         else if(data.status == "failed"){

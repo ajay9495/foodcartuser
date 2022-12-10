@@ -1,6 +1,9 @@
 import { useEffect } from "react";
 import { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
+import useSharedConfig from '../../SharedModules/SharedConfig/SharedConfig';
+
+
 
 export default function useMapLogic(){ 
 
@@ -11,6 +14,9 @@ export default function useMapLogic(){
     const [centerLocation,setCenterLocation] = useState(nearbyLocation);
     const [isButtonActive,setIsButtonActive] = useState(false);
     const navigateTo = useNavigate();
+    const {config} = useSharedConfig();
+
+
 
 
     function changeLocation(e){  
@@ -20,7 +26,7 @@ export default function useMapLogic(){
     }
 
     function selectlocation(){
-        navigateTo('/Address',{state:{selectedLocation: locationState }});
+        navigateTo(config.ROOT_PATH+'/Address',{state:{selectedLocation: locationState }});
     }
 
 
