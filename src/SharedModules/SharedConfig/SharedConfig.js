@@ -1,6 +1,8 @@
 
 export default function useSharedConfig(){
 
+    const ROOT_PATH = '/restaurant-user';
+
     const LOCAL_BASE_URL = 'http://localhost/projects/food-cart-api/public/api/';
     const REMOTE_BASE_URL = 'https://homeshope.xyz/public/api/';
     const REMOTE_BASE_URL_TWO = 'http://139.59.93.2/public/api/';
@@ -25,7 +27,8 @@ export default function useSharedConfig(){
         CURRENT_CATEGORY_IMAGE_BASE: CURRENT_CATEGORY_IMAGE_BASE,
         CURRENT_PRODUCT_IMAGE_BASE: CURRENT_PRODUCT_IMAGE_BASE,
         ORDER_ID_MASK: ORDER_ID_MASK,
-        STORE_ID: STORE_ID
+        STORE_ID: STORE_ID,
+        ROOT_PATH: ROOT_PATH
     }
 
 

@@ -16,6 +16,7 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
+import useSharedConfig from '../../SharedModules/SharedConfig/SharedConfig'
 
 import useCartLogic from './useCartLogic';
 
@@ -23,6 +24,7 @@ export default function Cart() {
 
   const [open,setOpen] =  useState(false);
   const {selectedItemsList, totalData, navigateTo} = useCartLogic();
+  const {config} = useSharedConfig();
 
 
 
@@ -86,7 +88,7 @@ export default function Cart() {
               {
                 selectedItemsList.map((item,index)=>{
                   return(
-                    <CartItem key={index} data={item} />
+                    <CartItem config={config} key={index} data={item} />
                   );
                 })
               }
@@ -104,7 +106,7 @@ export default function Cart() {
               sx={{padding:'1rem'}}
               variant='contained' 
               color='success' 
-              onClick={(e)=>{ navigateTo('/Address') }}
+              onClick={(e)=>{ navigateTo(config.ROOT_PATH+'/Address') }}
               >
                 Next
             </Button>

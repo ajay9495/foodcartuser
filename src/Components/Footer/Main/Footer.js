@@ -5,6 +5,7 @@ import { Typography } from '@mui/material'
 import { useNavigate } from "react-router-dom";
 
 import SharedContext from '../../../SharedContext/SharedContext';
+import useSharedConfig from '../../../SharedModules/SharedConfig/SharedConfig';
 import HomeIcon from'@mui/icons-material/HomeOutlined'
 import Search from'@mui/icons-material/Search'
 import Video from'@mui/icons-material/SmartDisplayOutlined'
@@ -21,6 +22,7 @@ export default function Footer() {
   let navigateTo = useNavigate();
 
   const {totalQuantity}  = useFooterLogic();
+  const {config} = useSharedConfig();
 
 
 
@@ -35,17 +37,17 @@ export default function Footer() {
   return (
     <div className="footer-wrapper" >
       <ClickerBase>
-        <div className="footer-sub" onClick={event => goTo("/")} >
+        <div className="footer-sub" onClick={event => goTo(config.ROOT_PATH)} >
           <HomeIcon sx={{color:'#457848;', fontSize:'30px'}} />
         </div>
       </ClickerBase>
       <ClickerBase>
-        <div className="footer-sub" onClick={event => goTo("Search")} >
+        <div className="footer-sub" onClick={event => goTo(config.ROOT_PATH+"/Search")} >
           <Search sx={{color:'#457848;', fontSize:'30px'}} />
         </div>
       </ClickerBase>
       <ClickerBase>
-        <div className="footer-sub" onClick={event => goTo("Cart")} >
+        <div className="footer-sub" onClick={event => goTo(config.ROOT_PATH+"/Cart")} >
           {(totalQuantity > 0)&&
               <div className="footer-coin">
                 <Typography fontWeight={'bold'} fontSize={'0.5rem'} sx={{color:'#fff'}}>
@@ -57,7 +59,7 @@ export default function Footer() {
         </div>
       </ClickerBase>
       <ClickerBase>
-        <div className="footer-sub" onClick={event => goTo("Account")} >
+        <div className="footer-sub" onClick={event => goTo(config.ROOT_PATH+"/Account")} >
           <Circle sx={{color:'#457848;', fontSize:'30px'}} />
         </div>
       </ClickerBase>

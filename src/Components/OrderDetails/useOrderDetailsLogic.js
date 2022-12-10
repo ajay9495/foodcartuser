@@ -5,6 +5,7 @@ import {useLocation} from 'react-router-dom';
 import { DialogueStore } from '../../Redux/DialogueSlice';
 import { useSelector,useDispatch } from "react-redux";
 import useSharedLibrary from "../../SharedModules/SharedLibrary/useSharedLibrary";
+import useSharedConfig from '../../SharedModules/SharedConfig/SharedConfig';
 
 export function useOrderDetailsLogic(){
 
@@ -17,11 +18,13 @@ export function useOrderDetailsLogic(){
     let location = useLocation();
     const dispatch = useDispatch();
     const {sharedLibrary} = useSharedLibrary();
+    const {config} = useSharedConfig();
 
     let ORDER_ID = location.state.order_id;
 
 
     function processApiData(data){
+        
 
         if(data.status == "success"){
 
@@ -58,8 +61,8 @@ export function useOrderDetailsLogic(){
     },[])
 
     return{
-        state
-        
+        state,
+        config
     }
 
     

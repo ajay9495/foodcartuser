@@ -5,6 +5,7 @@ import { useSelector,useDispatch } from "react-redux";
 import useAddressApi from './useAddressApi'
 import useLocalStorage from "../../SharedModules/LocalStorage/useLocalStorage";
 import useSharedLibrary from "../../SharedModules/SharedLibrary/useSharedLibrary";
+import useSharedConfig from "../../SharedModules/SharedConfig/SharedConfig";
 
 export default function useAddressLogic(){
 
@@ -25,6 +26,7 @@ export default function useAddressLogic(){
     const {setLocalUserData,getLocalUserData} = useLocalStorage();
     const {sharedLibrary} = useSharedLibrary();
     const [addressIsSet,setAddressIsSet] = useState("initial");
+    const {config}  = useSharedConfig();
 
     function InnitializeLogic(){
 
@@ -84,16 +86,17 @@ export default function useAddressLogic(){
                 maximumAge: 0 
             } );
         }
-        else{
-            console.log("locatin failed");
-        }
+
     }
 
     let nearbyLocation = {lat:'',lng:''};
     function navigateToMap(position){ 
 
         nearbyLocation = {lat:position.coords.latitude ,lng: position.coords.longitude};
-        navigateTo('../Map', {state:{nearbyLocation: nearbyLocation }});
+        // navigateTo('../Map', {state:{nearbyLocation: nearbyLocation }}); //CHANGED
+
+        navigateTo(config.ROOT_PATH+'/Map', {state:{nearbyLocation: nearbyLocation }});
+
     }
 
 

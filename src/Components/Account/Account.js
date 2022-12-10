@@ -16,11 +16,13 @@ import UserIcon from '@mui/icons-material/Person';
 import FeedbackIcon from '@mui/icons-material/CommentOutlined';
 import useAccountLogic from './useAccountLogic'
 import './Account.css'
+import useSharedConfig from '../../SharedModules/SharedConfig/SharedConfig'
 
 export default function Account() {
 
   const navigateTo = useNavigate();
   const {logoutUser} = useAccountLogic();
+  const {config} = useSharedConfig();
 
   return (
 
@@ -41,7 +43,7 @@ export default function Account() {
           </Row>
             
           <ClickerBase>
-            <Row classList={'px-4 py-3 g-2'} onClick={(e)=>{ navigateTo('/Orders') }}  >
+            <Row classList={'px-4 py-3 g-2'} onClick={(e)=>{ navigateTo(config.ROOT_PATH+'/Orders') }}  >
               
                   <Col classList={'c-collapse'}>
                     <Orders  sx={{fontSize:'1.5rem', color:'#457848'}} />
@@ -56,7 +58,7 @@ export default function Account() {
           </ClickerBase>
 
           <ClickerBase>
-            <Row classList={'px-4 py-3 g-2'} onClick={(e)=>{ navigateTo('/About') }}>
+            <Row classList={'px-4 py-3 g-2'} onClick={(e)=>{ navigateTo(config.ROOT_PATH+'/About') }}>
                 <Col classList={'c-collapse'}>
                   <Info  sx={{fontSize:'1.5rem', color:'#457848'}}  />
                 </Col>
@@ -69,7 +71,7 @@ export default function Account() {
           </ClickerBase>
 
           <ClickerBase>
-            <Row classList={'px-4 py-3 g-2'} onClick={(e)=>{ navigateTo('/Feedback') }}>
+            <Row classList={'px-4 py-3 g-2'} onClick={(e)=>{ navigateTo(config.ROOT_PATH+'/Feedback') }}>
                 <Col classList={'c-collapse'}>
                   <FeedbackIcon  sx={{fontSize:'1.5rem', color:'#457848'}}  />
                 </Col>

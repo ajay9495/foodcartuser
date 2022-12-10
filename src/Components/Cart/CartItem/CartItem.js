@@ -4,9 +4,8 @@ import Row from '../../BaseComponents/Row/Row';
 import Col from '../../BaseComponents/Col/Col';
 import { Typography } from '@mui/material';
 import './CartItem.css'
-import Biscuit from '../../../Image/biscuit.png'
 
-export default function CartItem({data}){
+export default function CartItem({data,config}){
 
 
   return (
@@ -15,7 +14,7 @@ export default function CartItem({data}){
       <Row classList={'bo '}>
         <Col classList={'bo p-2 c-collapse ci-item-left'}>
           <div className="ci-img-wrapper">
-            <img src={Biscuit} className={'ci-img'} />
+            <img src={config.CURRENT_PRODUCT_IMAGE_BASE+data.image_url} className={'ci-img'} />
           </div>
         </Col>
         <Col classList={'bo p-2 c-expand'}>

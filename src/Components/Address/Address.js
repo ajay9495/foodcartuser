@@ -10,12 +10,14 @@ import { Button, Typography } from '@mui/material'
 import TextField from '@mui/material/TextField';
 import TickIcon from '@mui/icons-material/TaskAlt';
 import useAddressLogic from './useAddressLogic'
+import useSharedConfig from '../../SharedModules/SharedConfig/SharedConfig'
 
 import './Address.css'
 
 export default function Address() {
 
     const {navigateTo, change, state, addressState, addressIsSet} = useAddressLogic();
+    const {config} = useSharedConfig();
 
   return (
 
@@ -113,7 +115,7 @@ export default function Address() {
                             sx={{padding:'1rem'}}
                             variant='contained' 
                             color='success'
-                            onClick={(e)=>{ navigateTo('/Payment') }} 
+                            onClick={(e)=>{ navigateTo(config.ROOT_PATH+'/Payment') }} 
                         >
                             Next
                         </Button>                    

@@ -12,8 +12,6 @@ import HeaderOffset from '../Header/HeaderOffset/HeaderOffset'
 import SharedContext from '../../../SharedContext/SharedContext'
 
 import { Typography,Button } from '@mui/material'
-import { useNavigate } from "react-router-dom";
-
 
 
 export default function ListItem({item,change,config}) {
@@ -88,7 +86,7 @@ export default function ListItem({item,change,config}) {
                     </Col>
                 </Row>
                 <div className='bo pull-bottom'>
-                    <Button onClick={(e)=>{ change.navigateTo('/OrderDetails',{state:{order_id: item.order_id }}) }} color='success' variant={'outlined'}>Details</Button>
+                    <Button onClick={(e)=>{ change.navigateTo(config.ROOT_PATH+'/OrderDetails',{state:{order_id: item.order_id }}) }} color='success' variant={'outlined'}>Details</Button>
                 </div>
             </Col>
         </Row>

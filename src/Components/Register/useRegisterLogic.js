@@ -256,11 +256,11 @@ export default function useRegisterLogic(){
     function goToLogin(){
 
 
-        if(loc.pathname == '/'){
-            navigateTo('/Login');
+        if(loc.pathname == config.ROOT_PATH){
+            navigateTo(config.ROOT_PATH+'/Login');
         }
         else{
-            navigateTo('/');
+            navigateTo(config.ROOT_PATH);
         }
 
     }

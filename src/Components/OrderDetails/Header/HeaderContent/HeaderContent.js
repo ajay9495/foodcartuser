@@ -9,10 +9,13 @@ import AddIcon from '@mui/icons-material/AddOutlined';
 import KartIcon from '@mui/icons-material/ShoppingCartOutlined';
 import ArrowIcon from '@mui/icons-material/ArrowBackIosNewOutlined';
 import { useNavigate } from 'react-router-dom'
+import useSharedConfig from '../../../../SharedModules/SharedConfig/SharedConfig'
+
 export default function HeaderContent(arg) {
 
   
   let navigateTo = useNavigate();
+  let {config} = useSharedConfig();
 
   function goTo(path){
 
@@ -38,10 +41,10 @@ export default function HeaderContent(arg) {
             <div className='gridSub '>   
               <ArrowIcon 
                 sx={{fontSize:20, color:'#457848'}} 
-                onClick={()=>{ goTo('/Orders') }}
+                onClick={()=>{ goTo(config.ROOT_PATH+'/Orders') }}
                 />
               <Typography sx={{color:'#457848', fontSize:20, fontWeight:1000,marginLeft:'10px'}} >
-                Cart Details
+                Order Details
               </Typography>
             </div>
 

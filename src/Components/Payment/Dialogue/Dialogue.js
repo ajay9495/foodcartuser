@@ -6,14 +6,16 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
+import useSharedConfig from '../../../SharedModules/SharedConfig/SharedConfig'
 
 export default function Dialogue({dialogueState, change}) {
 
   const navigateTo = useNavigate();
+  const {config} = useSharedConfig();
 
   function close(){
     change.closeDialogue();
-    navigateTo('/');
+    navigateTo(config.ROOT_PATH);
   }
 
   return (

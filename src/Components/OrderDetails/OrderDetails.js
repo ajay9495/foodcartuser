@@ -16,7 +16,7 @@ import { useOrderDetailsLogic } from './useOrderDetailsLogic'
 
 export default function OrderDetails() {
 
-    const {state} =useOrderDetailsLogic();
+    const { state,config } =useOrderDetailsLogic();
     
     return (
 
@@ -28,7 +28,7 @@ export default function OrderDetails() {
             <Col classList={'bo m-2 gy-2'}>
                 {
                     state.data.map((item,index)=>{
-                        return <CartItem data={item}  key={index} />
+                        return <CartItem config={config} data={item}  key={index} />
                     })
                 }
             </Col>

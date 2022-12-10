@@ -6,11 +6,12 @@ import Dialogue from '../BaseComponents/Dialogue/Dialogue'
 
 import Login from '../Login/Login';
 import Register from '../Register/Register';
-
+import useSharedConfig from '../../SharedModules/SharedConfig/SharedConfig';
 
 export default function LoginRouter(){
 
     const loc = useLocation();
+    const {config} = useSharedConfig();
 
     return(
 
@@ -20,8 +21,8 @@ export default function LoginRouter(){
               
               <div className=" main-sub">
                 <Routes location={loc} key={loc.key} >
-                  <Route path='/' element={<Login />} />
-                  <Route path='/Register' element={<Register />} />
+                  <Route path={config.ROOT_PATH} element={<Login />} />
+                  <Route path={config.ROOT_PATH+'/Register'} element={<Register />} />
                 </Routes>
               </div>
 
