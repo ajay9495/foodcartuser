@@ -21,7 +21,7 @@ import useSharedConfig from '../../SharedModules/SharedConfig/SharedConfig'
 export default function Account() {
 
   const navigateTo = useNavigate();
-  const {logoutUser} = useAccountLogic();
+  const {logoutUser,state} = useAccountLogic();
   const {config} = useSharedConfig();
 
   return (
@@ -37,7 +37,7 @@ export default function Account() {
                 <div className='a-image-wrapper'>
                   <UserIcon   sx={{fontSize:'4rem', color:'#fff'}} />
                 </div>
-                <Typography  color={'#457848'} fontSize={'2rem'} fontWeight={'bold'} >Name</Typography>
+                <Typography  color={'#457848'} fontSize={'2rem'} fontWeight={'bold'} >{state.user_name}</Typography>
               </Col>
             
           </Row>
