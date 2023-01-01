@@ -1,13 +1,13 @@
 
 export default function useSharedConfig(){
 
-    // const ROOT_PATH = "/apps/restaurant/restaurant-user";    
-    // const SERVICE_WORKER_PATH = "https://www.homeshope.shop/apps/restaurant/restaurant-user/ServiceWorker.js";
-    // const SERVICE_WORKER_SCOPE = "https://www.homeshope.shop/apps/restaurant/restaurant-user/";
-
     const ROOT_PATH = "/apps/restaurant/restaurant-user";    
-    const SERVICE_WORKER_PATH = "http://localhost:3000/apps/restaurant/restaurant-user/ServiceWorker.js";
-    const SERVICE_WORKER_SCOPE = "http://localhost:3000/apps/restaurant/restaurant-user/";
+    const SERVICE_WORKER_PATH = "https://www.homeshope.shop/apps/restaurant/restaurant-user/ServiceWorker.js";
+    const SERVICE_WORKER_SCOPE = "https://www.homeshope.shop/apps/restaurant/restaurant-user/";
+
+    // const ROOT_PATH = "/apps/restaurant/restaurant-user";    
+    // const SERVICE_WORKER_PATH = "http://localhost:3000/apps/restaurant/restaurant-user/ServiceWorker.js";
+    // const SERVICE_WORKER_SCOPE = "http://localhost:3000/apps/restaurant/restaurant-user/";
 
     // const ROOT_PATH = "/apps/restaurant/restaurant-user";    
     // const SERVICE_WORKER_PATH = "http://localhost/apps/restaurant/restaurant-user/ServiceWorker.js";

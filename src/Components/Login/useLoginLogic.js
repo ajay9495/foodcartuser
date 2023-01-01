@@ -133,16 +133,19 @@ export default function useLoginLogic(){
             
             setLocalUserData(userData);
 
+            dispatch(UserStore.getAction_setUserData(userData));   
+            navigateTo(config.ROOT_PATH);  
+
             
-            setTimeout(()=>{
+            // setTimeout(()=>{
 
-                dispatch(UserStore.getAction_setUserData(userData));   
-                navigateTo(config.ROOT_PATH);   
+            //     dispatch(UserStore.getAction_setUserData(userData));   
+            //     navigateTo(config.ROOT_PATH);   
                              
-            },1000);
+            // },1000);
 
-            //open new app activity
-            window.open("sample://activity?user_id="+data.payload.user_id+"&store_id="+data.payload.store_id);
+            // //open new app activity
+            // window.open("sample://activity?user_id="+data.payload.user_id+"&store_id="+data.payload.store_id);
 
             
             

@@ -28,9 +28,9 @@ class App extends  Component{
           :(this.props.user.data.status =="toRegister")? 
             <RegisterRouter />
           :(this.props.user.data.status =="initial")?
-            <div>initial</div>
+            <div></div>
           :
-            <div>default</div>
+            <div></div>
         }
       </div>
 
