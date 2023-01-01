@@ -6,8 +6,10 @@ import useAddressApi from './useAddressApi'
 import useLocalStorage from "../../SharedModules/LocalStorage/useLocalStorage";
 import useSharedLibrary from "../../SharedModules/SharedLibrary/useSharedLibrary";
 import useSharedConfig from "../../SharedModules/SharedConfig/SharedConfig";
+import { buttonBaseClasses } from "@mui/material";
 
 export default function useAddressLogic(){
+
 
 
     let INIITAL_STATE = [
@@ -27,6 +29,10 @@ export default function useAddressLogic(){
     const {sharedLibrary} = useSharedLibrary();
     const [addressIsSet,setAddressIsSet] = useState("initial");
     const {config}  = useSharedConfig();
+    const userAttempt = 0;
+
+    const [locationAttempt, setLocationAttempt] =  useState(0);
+
 
     function InnitializeLogic(){
 
@@ -77,12 +83,15 @@ export default function useAddressLogic(){
     }
 
     function goToMap(){
+
         
         if ( navigator.geolocation ){
 
+            setLocationError("Fetching the current location please wait.");
+
             navigator.geolocation.getCurrentPosition( navigateToMap, positionError, { 
                 enableHighAccuracy: true, 
-                timeout: 15000, 
+                timeout: 5000, 
                 maximumAge: 0 
             } );
         }
@@ -92,11 +101,50 @@ export default function useAddressLogic(){
     let nearbyLocation = {lat:'',lng:''};
     function navigateToMap(position){ 
 
-        nearbyLocation = {lat:position.coords.latitude ,lng: position.coords.longitude};
-        // navigateTo('../Map', {state:{nearbyLocation: nearbyLocation }}); //CHANGED
+        setLocationError("");
 
+        nearbyLocation = {lat:position.coords.latitude ,lng: position.coords.longitude};
         navigateTo(config.ROOT_PATH+'/Map', {state:{nearbyLocation: nearbyLocation }});
 
+    }
+
+    function setLocationError(error){
+
+        dispatch(addressSlice.getAction_setLocationError(error));
+    }
+
+    function getCurrentUserLocation(){
+
+        if ( navigator.geolocation ){
+
+            navigator.geolocation.getCurrentPosition( processCurrentUserLocation, processCurrentLocationError, { 
+                enableHighAccuracy: true, 
+                timeout: 2000, 
+                maximumAge: 0 
+            } );
+        }
+    }
+
+    function processCurrentUserLocation(position){
+
+        console.log("processCurrentUserLocation");
+        console.log(position);
+    }
+
+    function processCurrentLocationError(err){
+
+        console.log("processCurrentLocationError");
+        console.log(err);
+    }
+
+
+
+    function positionError(err){
+
+        setLocationAttempt((prevState)=>{
+
+            return prevState + 1;
+        });
     }
 
 
@@ -106,16 +154,10 @@ export default function useAddressLogic(){
         dispatch(addressSlice.getAction_validateData());
     }
 
-
-    function positionError(err){
-        console.log("hello positionError");
-    }
-
     
     function processApiResponse(data){
 
-        console.log("processApiResponse");
-        console.log(data);
+
 
         if(data.status == "success"){
 
@@ -136,26 +178,6 @@ export default function useAddressLogic(){
             console.log("else");
         }
 
-        
-      
-        // if(data.status == "success"){
-
-        //     newLocalUserData = {
-        //         ...currentLocalUserData,
-        //         address: addressState.data[0].value,
-        //         landmark: addressState.data[1].value,
-        //         location: addressState.data[2].value
-        //     };
-
-        //     setLocalUserData(newLocalUserData);
-        //     dispatch(addressSlice.getAction_setActive());
-           
-
-        // }
-        // else{
-        //     console.log("test address api failed");
-        //     console.log(data);
-        // }
 
     }
 
@@ -194,6 +216,28 @@ export default function useAddressLogic(){
 
        
     },[addressState])
+
+    useEffect(()=>{
+
+
+        if(addressIsSet != "set"){
+
+            if(locationAttempt == 0){
+
+                getCurrentUserLocation();
+            }
+            else if(locationAttempt < 4){
+    
+                goToMap();
+            }
+            else if(locationAttempt == 4){
+    
+                setLocationError("Failed to set loaction. Please try again.");
+            }            
+        }
+
+
+    },[locationAttempt])
 
 
     const change = {

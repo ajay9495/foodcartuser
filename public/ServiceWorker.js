@@ -1,15 +1,17 @@
 
 
+const cacheName = 'v-1-1-4';
+const APP_HOST_NAME = "www.homeshope.shop";
 
-
-const cacheName = 'v2';
+let fetch_url = "";
+let url = {};
 
 
 this.addEventListener('install', function(event) {
 
     console.log("sw installed");
 
-})
+});
 
 
 this.addEventListener('activate',(event)=>{
@@ -23,7 +25,9 @@ this.addEventListener('activate',(event)=>{
                 existingCacheList.map((existingCacheName)=>{
                     
                     if(existingCacheName != cacheName){
+                        
                         return caches.delete(existingCacheName);
+
                     }
                 })
             )
@@ -32,33 +36,55 @@ this.addEventListener('activate',(event)=>{
     )
 
 
-})
+});
 
 
 this.addEventListener('fetch',(event)=>{
 
-    console.log("----------addEventListener triggered---------------");
 
-    event.respondWith(
+    fetch_url = event.request.url;
 
-        caches.match(event.request)
-        .then((response)=>{
+    url =  new URL(fetch_url);
 
-            if (response) return response;
+    if(url.hostname == APP_HOST_NAME){
 
-            caches.open(cacheName)
-            .then((cache)=>{
+        event.respondWith(
 
-                cache.add(event.request);
-                console.log("caches added from fetch");
+            caches.match(event.request)
+            .then((response)=>{
+
+
+                if (response) {
+
+                    return response;
+                }
+                else{
+
+                    caches.open(cacheName)
+                    .then((cache)=>{
+
+                        cache.add(event.request);
+                    })
+                    .catch((err)=>{
+                        console.log(err);
+                    });
+
+                    return fetch(event.request);
+
+                }
+
+
+            })
+            .catch((err)=>{
+
+                return(err);
             })
 
-            console.log("----------responce triggered from fetch---------------");
-            return fetch(event.request);
+        )
+        
+    }
 
-        })
-    )
-})
+});
 
 
 

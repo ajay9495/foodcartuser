@@ -32,7 +32,8 @@ const customAddressSlice = createSlice({
         toggleIsActive,
         setAddressState,
         setActive,
-        setInActive
+        setInActive,
+        setLocationError
     }
 });
 
@@ -103,6 +104,9 @@ function changeLocationData(state, action){
     state.data[2].value = action.payload.location;
 }
 
+function setLocationError(state, action){
+    state.data[2].error = action.payload.error;
+}
 
 let isValid = true;
 function validateData(state, action){
@@ -155,6 +159,7 @@ function validateData(state, action){
 
 
 
+
 function getAction_setInitialState(){
     
     return{
@@ -187,6 +192,14 @@ function getAction_changeLocationData(location){
         payload:{location: location}
     }
 }
+
+function getAction_setLocationError(error){
+    return{
+        type:"address/setLocationError",
+        payload:{error: error}
+    }
+}
+
 
 function getAction_validateData(){
     
@@ -235,7 +248,8 @@ export const addressSlice = {
     getAction_toggleIsActive: getAction_toggleIsActive,
     getAction_setAddressState: getAction_setAddressState,
     getAction_setActive: getAction_setActive,
-    getAction_setInActive: getAction_setInActive
+    getAction_setInActive: getAction_setInActive,
+    getAction_setLocationError: getAction_setLocationError
 
 }
 

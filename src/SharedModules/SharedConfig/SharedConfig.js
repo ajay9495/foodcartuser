@@ -1,7 +1,18 @@
 
 export default function useSharedConfig(){
 
-    const ROOT_PATH = '/restaurant-user';
+    // const ROOT_PATH = "/apps/restaurant/restaurant-user";    
+    // const SERVICE_WORKER_PATH = "https://www.homeshope.shop/apps/restaurant/restaurant-user/ServiceWorker.js";
+    // const SERVICE_WORKER_SCOPE = "https://www.homeshope.shop/apps/restaurant/restaurant-user/";
+
+    const ROOT_PATH = "/apps/restaurant/restaurant-user";    
+    const SERVICE_WORKER_PATH = "http://localhost:3000/apps/restaurant/restaurant-user/ServiceWorker.js";
+    const SERVICE_WORKER_SCOPE = "http://localhost:3000/apps/restaurant/restaurant-user/";
+
+    // const ROOT_PATH = "/apps/restaurant/restaurant-user";    
+    // const SERVICE_WORKER_PATH = "http://localhost/apps/restaurant/restaurant-user/ServiceWorker.js";
+    // const SERVICE_WORKER_SCOPE = "http://localhost/apps/restaurant/restaurant-user/";
+
 
     const LOCAL_BASE_URL = 'http://localhost/projects/food-cart-api/public/api/';
     const REMOTE_BASE_URL = 'https://homeshope.xyz/public/api/';
@@ -10,14 +21,14 @@ export default function useSharedConfig(){
     const LOCAL_CATEGORY_IMAGE_BASE = "http://localhost/projects/food-cart-api/storage/app/public/categories/";
     const REMOTE_CATEGORY_IMAGE_BASE = "https://homeshope.xyz/storage/app/public/categories/";
     const REMOTE_CATEGORY_IMAGE_BASE_TWO = "http://139.59.93.2/storage/app/public/categories/";
-
+ 
     const LOCAL_PRODUCT_IMAGE_BASE = "http://localhost/projects/food-cart-api/storage/app/public/products/";
     const REMOTE_PRODUCT_IMAGE_BASE = "https://homeshope.xyz/storage/app/public/products/";
     const REMOTE_PRODUCT_IMAGE_BASE_TWO = "http://139.59.93.2/storage/app/public/products/";
 
-    const CURRENT_BASE_URL = REMOTE_BASE_URL;
-    const CURRENT_CATEGORY_IMAGE_BASE = REMOTE_CATEGORY_IMAGE_BASE;
-    const CURRENT_PRODUCT_IMAGE_BASE = REMOTE_PRODUCT_IMAGE_BASE;
+    const CURRENT_BASE_URL = LOCAL_BASE_URL;
+    const CURRENT_CATEGORY_IMAGE_BASE = LOCAL_CATEGORY_IMAGE_BASE;
+    const CURRENT_PRODUCT_IMAGE_BASE = LOCAL_PRODUCT_IMAGE_BASE;
 
     const ORDER_ID_MASK = 1111;
     const STORE_ID = 1;
@@ -28,7 +39,9 @@ export default function useSharedConfig(){
         CURRENT_PRODUCT_IMAGE_BASE: CURRENT_PRODUCT_IMAGE_BASE,
         ORDER_ID_MASK: ORDER_ID_MASK,
         STORE_ID: STORE_ID,
-        ROOT_PATH: ROOT_PATH
+        ROOT_PATH: ROOT_PATH,
+        SERVICE_WORKER_PATH: SERVICE_WORKER_PATH,
+        SERVICE_WORKER_SCOPE: SERVICE_WORKER_SCOPE
     }
 
 

@@ -23,18 +23,27 @@ const center = {lat: 9.9312328, lng: 76.3476287};
 
 export default function Map() {
 
-    const {isButtonActive, centerLocation, locationState, change} = useMapLogic();
+    const {isButtonActive, centerLocation, locationState, change,mapRef,zoomLevel,setZoomLevel} = useMapLogic();
 
     const { isLoaded } = useJsApiLoader({
       id: 'google-map-script',
       googleMapsApiKey: ""
     });
   const [map, setMap] = React.useState(null)
-
+ 
   const onLoad = React.useCallback(function callback(map) {
-    const bounds = new window.google.maps.LatLngBounds(center);
+
+
+    const bounds = new window.google.maps.LatLngBounds(locationState);
     map.fitBounds(bounds);
-    setMap(map)
+    setMap(map);
+
+    setTimeout(()=>{
+
+      setZoomLevel(15);
+
+    },1000);
+
   }, [])
 
   const onUnmount = React.useCallback(function callback(map) {
@@ -59,9 +68,10 @@ export default function Map() {
             {(isLoaded)?
                 
               <GoogleMap
+                ref={mapRef}
                 mapContainerStyle={containerStyle}
-                center={centerLocation}
-                zoom={10}
+                center={locationState}
+                zoom={zoomLevel}
                 onLoad={onLoad}
                 onUnmount={onUnmount}
                 onClick={(e)=>{

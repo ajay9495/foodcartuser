@@ -49,7 +49,7 @@ export default function Account() {
                     <Orders  sx={{fontSize:'1.5rem', color:'#457848'}} />
                   </Col>
                   <Col classList={'px-3'}>
-                    <Typography color={'#457848'} fontSize={'1.25rem'} fontWeight={'bold'} >
+                    <Typography color={'#457848'} fontSize={'1rem'} fontWeight={'bold'} >
                       Your Orders
                     </Typography>
                   </Col>
@@ -63,7 +63,7 @@ export default function Account() {
                   <Info  sx={{fontSize:'1.5rem', color:'#457848'}}  />
                 </Col>
                 <Col classList={'px-3'}>
-                  <Typography  color={'#457848'}  fontSize={'1.25rem'} fontWeight={'bold'}>
+                  <Typography  color={'#457848'}  fontSize={'1rem'} fontWeight={'bold'}>
                     About
                   </Typography>
                 </Col>
@@ -76,7 +76,7 @@ export default function Account() {
                   <FeedbackIcon  sx={{fontSize:'1.5rem', color:'#457848'}}  />
                 </Col>
                 <Col classList={'px-3'}>
-                  <Typography  color={'#457848'}  fontSize={'1.25rem'} fontWeight={'bold'}>
+                  <Typography  color={'#457848'}  fontSize={'1rem'} fontWeight={'bold'}>
                     Send Feedback
                   </Typography>
                 </Col>
@@ -89,7 +89,7 @@ export default function Account() {
                   <Logout sx={{fontSize:'1.5rem', color:'#457848'}} />
                 </Col>
                 <Col classList={'px-3'}>
-                  <Typography  color={'#457848'}  fontSize={'1.25rem'} fontWeight={'bold'}>
+                  <Typography  color={'#457848'}  fontSize={'1rem'} fontWeight={'bold'}>
                     Logout
                   </Typography>
                 </Col>

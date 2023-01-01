@@ -3,7 +3,8 @@ import { useSelector,useDispatch } from "react-redux";
 import {UserStore} from "../../Redux/UserSlice";
 import useLocalStorage from "../../SharedModules/LocalStorage/useLocalStorage";
 import useSharedConfig from "../../SharedModules/SharedConfig/SharedConfig";
-
+import useAccountApi from "./useAccountApi";
+import { useEffect } from "react";
 
 export default function useAccountLogic(){
 
@@ -11,6 +12,7 @@ export default function useAccountLogic(){
     const dispatch = useDispatch();
     const {setLocalUserData,getLocalUserData} = useLocalStorage();
     const {config} = useSharedConfig();
+    const { getUserData, processGetError } = useAccountApi();
 
     let userData = {};
     let localUserData = {};
@@ -35,8 +37,29 @@ export default function useAccountLogic(){
 
     }
 
+    useEffect(()=>{
+
+        localUserData = getLocalUserData();
+
+        getUserData(localUserData.user_id)
+        .then((data)=>{
+            
+            console.log("useEffect");
+            console.log("hello daata");
+            console.log(data);
+        })
+        .catch((err)=>{
+            processGetError(err);
+        });
+
+    },[]);
+
     return{
         logoutUser
     }
+
+
+
+
 }
 

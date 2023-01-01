@@ -1,11 +1,13 @@
 import { useSelector,dispatch } from "react-redux"; 
 import {cartGetters} from '../../Redux/CartSlice';
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 export default function useCartLogic(){
  
     const navigateTo =  useNavigate();
+    const location = useLocation();
     const state = useSelector(cartGetters.getCartState);
+
 
     let selectedItemsList = [];
 
