@@ -21,9 +21,9 @@ export default function HeaderContent(arg) {
 
         <div className="px-3 header-content-wrapper">
             <div className='gridSub'>   
-              <KartIcon sx={{fontSize:30, color:'#457848'}} />
+              
               <Typography sx={{color:'#457848', fontSize:20, fontWeight:1000,marginLeft:'10px'}} >
-                InstaKart
+                Puttu Kada
               </Typography>
             </div>
 

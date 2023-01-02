@@ -9,7 +9,7 @@
     display: grid;
     grid-template-rows: auto max-content;
 }
-
+ 
 .ca-content-wrapper{
     background-color: #ffffff;
     overflow-y: scroll;

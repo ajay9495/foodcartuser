@@ -42,6 +42,9 @@
 .pl-img{
     width: 80%;
     height: auto;
+    user-select: none; /* Standard syntax */
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none; /* IE 10 and IE 11 */
 }
 
 .pl-unit-price{

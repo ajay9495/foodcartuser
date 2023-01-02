@@ -35,6 +35,7 @@ export default function useAccountLogic(){
         
         setLocalUserData(userData);
         dispatch(UserStore.getAction_setUserData(userData));
+        navigateTo(config.ROOT_PATH, { replace: true });
 
         document.location.href= config.ROOT_PATH;
 
