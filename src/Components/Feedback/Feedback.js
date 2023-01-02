@@ -34,7 +34,7 @@ export default function Feedback() {
                 onChange={(e)=>{ change.feedbackChange(e) }}
             />
             <Button 
-                color='primary' 
+                color='success' 
                 variant="contained"
                 sx={{width:'100%',padding:'1rem'}} 
                 onClick={(e)=>{ change.validate(e) }}
@@ -43,7 +43,7 @@ export default function Feedback() {
             </Button>
         </Col>
 
-
+ 
     </Wrapper>
 
 

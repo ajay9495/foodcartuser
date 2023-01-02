@@ -45,7 +45,6 @@ export default function useAccountLogic(){
        
         if(data.status == "success"){
 
-            console.log("success");
 
             setState({user_name: data.payload.name});
 
