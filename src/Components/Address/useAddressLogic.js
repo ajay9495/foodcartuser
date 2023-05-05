@@ -4,9 +4,8 @@ import {addressSlice} from '../../Redux/AddressSlice'
 import { useSelector,useDispatch } from "react-redux";
 import useAddressApi from './useAddressApi'
 import useLocalStorage from "../../SharedModules/LocalStorage/useLocalStorage";
-import useSharedLibrary from "../../SharedModules/SharedLibrary/useSharedLibrary";
 import useSharedConfig from "../../SharedModules/SharedConfig/SharedConfig";
-import { buttonBaseClasses } from "@mui/material";
+import useRazorPayLogic from "../Payment/useRazorPayLogic";
 
 export default function useAddressLogic(){
 
@@ -18,34 +17,28 @@ export default function useAddressLogic(){
         {id: 'location', value: '', error: ''}
     ];
 
-    let {postAddressData,processApiError} = useAddressApi();
     let dispatch = useDispatch();
     let location = useLocation();
-    const navigateTo = useNavigate();
-    const [state,setState] = useState(INIITAL_STATE);
     let addressState = useSelector(addressSlice.getAddressState);
-    const [isFirstLoad, setIsFirstLoad] = useState(true);
+    const navigateTo = useNavigate();
+
+    const {} = useRazorPayLogic();
     const {setLocalUserData,getLocalUserData} = useLocalStorage();
-    const {sharedLibrary} = useSharedLibrary();
+    let {postAddressData,processApiError} = useAddressApi();
+
+    const [state,setState] = useState(INIITAL_STATE);
+    const [dialogueState, setDialogueState] = useState({isOpen:false, message: ""});
+    const [isFirstLoad, setIsFirstLoad] = useState(true);
     const [addressIsSet,setAddressIsSet] = useState("initial");
-    const {config}  = useSharedConfig();
-    const userAttempt = 0;
-
     const [locationAttempt, setLocationAttempt] =  useState(0);
+    const {config}  = useSharedConfig();
 
-
-    function InnitializeLogic(){
-
-        if(isFirstLoad){
-
-            // onInnit();
-            setIsFirstLoad(false);
-        }
-    }
-
-
-    let initalAddressObj = {};
+    let USER_DATA = getLocalUserData();
+    let USER_ID = USER_DATA.user_id; 
     let currentLocalUserData = getLocalUserData();
+
+
+
 
     function onInnit(){
 
@@ -53,22 +46,26 @@ export default function useAddressLogic(){
 
         if("address" in currentLocalUserData){
             if(currentLocalUserData.address == ""){
+
                 setAddressIsSet("notSet");
+                getCurrentUserLocation();
+
             }
             else{
-                dispatch(addressSlice.getAction_setAddressState(currentLocalUserData))
-                setAddressIsSet("set")
+                dispatch(addressSlice.getAction_setAddressState(currentLocalUserData));
+                setAddressIsSet("set");
+
             }
         }
         else{
             
-            setAddressIsSet("notSet")
+            setAddressIsSet("notSet");
+            getCurrentUserLocation();
+
         }
 
         setIsFirstLoad(false);
     }
-
-
 
     function addressChange(e){
         dispatch(addressSlice.getAction_changeAddressData(e.target.value));
@@ -137,8 +134,6 @@ export default function useAddressLogic(){
         console.log(err);
     }
 
-
-
     function positionError(err){
 
         setLocationAttempt((prevState)=>{
@@ -147,13 +142,11 @@ export default function useAddressLogic(){
         });
     }
 
-
     let newLocalUserData =  {};
     function validate(){
 
         dispatch(addressSlice.getAction_validateData());
     }
-
     
     function processApiResponse(data){
 
@@ -181,10 +174,22 @@ export default function useAddressLogic(){
 
     }
 
+    function closeDialogue(){
+        setDialogueState({isOpen:false, message: ""});
+    }
+
+    function openDialogue(message){
+        setDialogueState({isOpen:true, message: message});
+    }
+
+
+
+
+
+
 
 
     useEffect(()=>{
-
 
         if(isFirstLoad){    onInnit()   }
 
@@ -198,9 +203,8 @@ export default function useAddressLogic(){
     useEffect(()=>{
 
         if(addressIsSet == "notSet"){
-            
-            if(addressState.isValid){
 
+            if(addressState.isValid){
 
                 apiPayload = {
                     ...addressState,
@@ -212,21 +216,16 @@ export default function useAddressLogic(){
                 .catch((err)=>{ processApiError(err) })
             }
         }
-
-
        
     },[addressState])
+
 
     useEffect(()=>{
 
 
-        if(addressIsSet != "set"){
+        if(addressIsSet == "notSet"){
 
-            if(locationAttempt == 0){
-
-                getCurrentUserLocation();
-            }
-            else if(locationAttempt < 4){
+            if(locationAttempt < 4){
     
                 goToMap();
             }
@@ -244,7 +243,10 @@ export default function useAddressLogic(){
         addressChange: addressChange,
         landmarkChange: landmarkChange,
         goToMap: goToMap,
-        validate: validate
+        validate: validate,
+        openDialogue:openDialogue,
+        closeDialogue: closeDialogue
+        // InnitializePayment:InnitializePayment
     }
 
     return{
@@ -252,6 +254,9 @@ export default function useAddressLogic(){
         change,
         state,
         addressState,
+        dialogueState,
         addressIsSet
     }
+
+
 }

@@ -13,7 +13,6 @@ import HeaderOffset from './Header/HeaderOffset/HeaderOffset'
 import React, {setState, useState} from 'react'
 import { GoogleMap, Marker, useJsApiLoader } from '@react-google-maps/api';
 
-
 const containerStyle = {
   width: '100vw',
   height: '100vh'
@@ -23,34 +22,8 @@ const center = {lat: 9.9312328, lng: 76.3476287};
 
 export default function Map() {
 
-    const {isButtonActive, centerLocation, locationState, change,mapRef,zoomLevel,setZoomLevel} = useMapLogic();
-
-    const { isLoaded } = useJsApiLoader({
-      id: 'google-map-script',
-      googleMapsApiKey: ""
-    });
-  const [map, setMap] = React.useState(null)
- 
-  const onLoad = React.useCallback(function callback(map) {
-
-
-    const bounds = new window.google.maps.LatLngBounds(locationState);
-    map.fitBounds(bounds);
-    setMap(map);
-
-    setTimeout(()=>{
-
-      setZoomLevel(15);
-
-    },1000);
-
-  }, [])
-
-  const onUnmount = React.useCallback(function callback(map) {
-    setMap(null)
-  }, [])
-
-
+  const {   isButtonActive, centerLocation, locationState, change, mapRef,  
+  zoomLevel, setZoomLevel, config, isLoaded, map, setMap, onLoad, onUnmount    } = useMapLogic();
 
   return (
     
@@ -82,7 +55,7 @@ export default function Map() {
               </GoogleMap>                
 
               :
-                <div>not loaded</div>
+                <div></div>
             }          
           
           </div>

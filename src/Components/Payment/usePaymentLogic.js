@@ -6,7 +6,7 @@ import usePaymentApi from './usePaymentApi'
 import { useState } from "react";
 import useSharedConfig from "../../SharedModules/SharedConfig/SharedConfig";
 
- 
+
 
 export default function usePaymentLogic(){
 

@@ -9,27 +9,14 @@ import AddIcon from '@mui/icons-material/AddOutlined';
 import KartIcon from '@mui/icons-material/ShoppingCartOutlined';
 import ArrowIcon from '@mui/icons-material/ArrowBackIosNewOutlined';
 import { useNavigate } from 'react-router-dom'
+import useSharedConfig from '../../../../SharedModules/SharedConfig/SharedConfig';
+
 export default function HeaderContent(arg) {
 
   
   let navigateTo = useNavigate();
+  const {config} = useSharedConfig();
 
-  function goTo(path){
-
-    let homeWrapperDiv = document.getElementById('HomeWrapper');
-    let mainWrapperDiv = document.getElementById('mainWrapper');
-    let subscriptionWrapperDiv  = document.getElementById('subscriptionWrapper');
-    navigateTo(path);
-
-  }
-
-
-
-
-  function callToggleOverlay(){
-    arg.props.closeSearchResult()
-    arg.props.toggleOverlay()
-  }
 
 
   return (
@@ -38,7 +25,7 @@ export default function HeaderContent(arg) {
             <div className='gridSub '>   
               <ArrowIcon 
                 sx={{fontSize:20, color:'#457848'}} 
-                onClick={()=>{ goTo('/Address') }}
+                onClick={()=>{ navigateTo(config.ROOT_PATH+'/Address') }}
                 />
               <Typography sx={{color:'#457848', fontSize:'1rem', fontWeight:1000,marginLeft:'10px'}} >
                 Select Delevery Location

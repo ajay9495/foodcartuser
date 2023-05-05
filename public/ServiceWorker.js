@@ -1,8 +1,8 @@
 
 
-const cacheName = 'v-1-1-4';
-const APP_HOST_NAME = "www.homeshope.shop";
 
+const cacheName = 'v-1-1-5';
+const APP_HOST_NAME = "www.homeshope.shop";
 let fetch_url = "";
 let url = {};
 

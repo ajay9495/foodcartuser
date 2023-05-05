@@ -11,19 +11,23 @@ import TextField from '@mui/material/TextField';
 import TickIcon from '@mui/icons-material/TaskAlt';
 import useAddressLogic from './useAddressLogic'
 import useSharedConfig from '../../SharedModules/SharedConfig/SharedConfig'
+import Dialogue from './Dialogue/Dialogue'
 
 import './Address.css'
 
 export default function Address() {
 
-    const {navigateTo, change, state, addressState, addressIsSet} = useAddressLogic();
+    const {navigateTo, change, state, addressState, dialogueState, addressIsSet} = useAddressLogic();
     const {config} = useSharedConfig();
 
   return (
 
     <Wrapper classList={'bo ad-main-wrapper'}>
+    
         <Header />
         <HeaderOffset />
+        <Dialogue change={change} dialogueState={dialogueState} />
+
 
         {
 
@@ -110,14 +114,15 @@ export default function Address() {
                     </div>
                     <div className='bo p-3'>
                         <Button 
+                            
                             fullWidth 
                             disableElevation 
                             sx={{padding:'1rem'}}
                             variant='contained' 
                             color='success'
-                            onClick={(e)=>{ navigateTo(config.ROOT_PATH+'/Payment') }} 
+                            // onClick={(e)=>{ change.InnitializePayment() }} 
                         >
-                            Next
+                            <div id='rzp-button1' >NEXT</div>
                         </Button>                    
                     </div>
                 </div>
